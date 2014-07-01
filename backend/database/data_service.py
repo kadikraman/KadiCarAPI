@@ -22,7 +22,7 @@ def get_all_expenses():
     """
     conn = sqlite3.connect("database/expenses.db")
     connection_cursor = conn.cursor()
-    connection_cursor.execute("SELECT type, date, amount FROM expenses")
+    connection_cursor.execute("SELECT expense_type, date, amount FROM expenses")
     result = connection_cursor.fetchall()
     connection_cursor.close()
     conn.commit()
@@ -39,7 +39,7 @@ def get_expenses_by_type(expense_type):
     connection_cursor = conn.cursor()
     connection_cursor.execute("""SELECT * 
                                  FROM expenses 
-                                 WHERE type = '{0}'""".format(expense_type))
+                                 WHERE expense_type = '{0}'""".format(expense_type))
     result = connection_cursor.fetchall()
     connection_cursor.close()
     conn.commit()

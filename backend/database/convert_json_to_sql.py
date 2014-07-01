@@ -19,8 +19,8 @@ sql = ''
 for expense in data:
 	sql += 'con.execute("""INSERT INTO expenses\n'
 
-	# type always in dict
-	sql += '\t' + '(type, \n \t'
+	# expense_type always in dict
+	sql += '\t' + '(expense_type, \n \t'
 
 	# amount always in dict
 	sql += 'amount, \n \t'
@@ -37,13 +37,13 @@ for expense in data:
 	if('comment' in expense):
 		sql += 'comment, \n \t'
 
-	# date always in dict
-	sql += 'date) \n'
+	# expense_date always in dict
+	sql += 'expense_date) \n'
 
 	sql += 'VALUES  \n'
 
-	# type always in dict
-	sql += '\t' + '(\'' + expense['type'] + '\', \n'
+	# expense_type always in dict
+	sql += '\t' + '(\'' + expense['expense_type'] + '\', \n'
 
 	# amount always in dict
 	sql += '\t' + str(expense['cost']) + ', \n'
@@ -60,8 +60,8 @@ for expense in data:
 	if('comment' in expense):
 		sql += '\t' + '\'' + str(expense['comment']) + '\'' + ', \n'
 
-	# date always in dict
-	sql += '\t' + '\'' + expense['date'] + '\')""") \n \n'
+	# expense_date always in dict
+	sql += '\t' + '\'' + expense['expense_date'] + '\')""") \n \n'
 
 
 # open the file (this creates the file if it didn't already exist)
