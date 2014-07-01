@@ -36,12 +36,11 @@ def named_tuple_to_dict(named_tuple):
     :rtype : dictionary
     """
     dictionary = {}
-
-    dictionary["type"] = named_tuple.type
-    dictionary["amount"] = named_tuple.amount
-    dictionary["date"] = named_tuple.date
-    dictionary["comment"] = named_tuple.comment
-    dictionary["mileage"] = named_tuple.mileage
-    dictionary["litres"] = named_tuple.litres
+    for field in named_tuple._fields:
+        # Create a dictionary key for each field in tuple and
+        # enter the corresponding value by asking the
+        # the object if it has an attribute/property with 
+        # name of the field, and if so, return the value.
+        dictionary[field] = getattr(named_tuple, field)
 
     return dictionary
