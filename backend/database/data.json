@@ -70,5 +70,12 @@
 	{ "expense_type": "petrol", "cost": 41.91, "expense_date": "04/06/14", "mileage": 52201 },
 	{ "expense_type": "parking", "cost": 3.50, "expense_date": "13/06/14" },
 	{ "expense_type": "petrol", "cost": 39.15, "expense_date": "15/06/14", "mileage": 52525 },
-	{ "expense_type": "parking", "cost": 3.50, "expense_date": "20/06/14" }
+	{ "expense_type": "parking", "cost": 3.50, "expense_date": "20/06/14" },
+	{ "expense_type": "parking", "cost": 1.00, "expense_date": "25/06/14" },
+	{ "expense_type": "petrol", "cost": 44.33, "expense_date": "26/06/14", "mileage": 52882, "litres": 34.66 },
+	{ "expense_type": "profit", "cost": 580.80, "expense_date": "26/06/14", "comment": "Tessella expenses" },
+	{ "expense_type": "parking", "cost": 3.70, "expense_date": "26/06/14" },
+	{ "expense_type": "parking", "cost": 3.70, "expense_date": "28/06/14" },
+	{ "expense_type": "parking", "cost": 3.70, "expense_date": "30/06/14" },
+	{ "expense_type": "parking", "cost": 1.20, "expense_date": "01/07/14" }
 ]

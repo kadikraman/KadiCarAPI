@@ -8,6 +8,22 @@ Handles requests from the server and returns db queries in the desired format.
 import data_service
 
 
+def get_all_expenses(requested_return_type):
+    """
+    Gets all the expenses from the database
+    :return:
+    """
+    named_tuple_list = data_service.get_all_expenses()
+    if requested_return_type == 'dict':
+        return named_tuple_list_to_dict(named_tuple_list)
+
+    if requested_return_type == 'key-value':
+        return named_tuple_list
+
+    # default
+    return named_tuple_list
+
+
 def get_expense_by_id(expense_id, requested_return_type):
     """
     Queries the db for the desired expense by id and returns

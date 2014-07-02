@@ -1,16 +1,16 @@
 """
-Does spoopy stuff
+Handles requests from the client
 """
 import json
-from database import data_service, parsing_service
+from database import parsing_service
 from bottle import route, run, get, template, debug
 
-@route('/all_expenses')
+@route("/all_expenses")
 def all_expenses():
     """
     It does stuff
     """
-    return json.dumps(data_service.get_all_expenses())
+    return json.dumps(parsing_service.get_all_expenses('dict'))
 
 @get("/get_expense_by_id/:expense_id")
 def get_one_expense(expense_id):
@@ -29,7 +29,7 @@ def get_dashboard():
     """
     Testing templates
     """
-    result = data_service.get_all_expenses()
+    result = parsing_service.get_all_expenses('key-value')
     output = template('make_table', rows=result)
     return output
 

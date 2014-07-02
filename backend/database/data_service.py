@@ -21,8 +21,9 @@ def get_all_expenses():
     Returns all expenses in the db
     """
     conn = sqlite3.connect("database/expenses.db")
+    conn.row_factory = namedtuple_factory
     connection_cursor = conn.cursor()
-    connection_cursor.execute("SELECT expense_type, date, amount FROM expenses")
+    connection_cursor.execute("SELECT * FROM expenses")
     result = connection_cursor.fetchall()
     connection_cursor.close()
     conn.commit()
