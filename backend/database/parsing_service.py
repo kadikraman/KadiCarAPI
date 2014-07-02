@@ -40,7 +40,7 @@ def get_expense_by_id(expense_id, requested_return_type):
     return named_tuple
 
 
-def get_expense_by_type(expense_type, requested_return_type):
+def get_expenses_by_type(expense_type, requested_return_type):
     """
     Queries the database for the required expense type and returns
     the list of matching expenses in the desired format.
@@ -51,7 +51,10 @@ def get_expense_by_type(expense_type, requested_return_type):
     """
     named_tuple_list = data_service.get_expenses_by_type(expense_type)
 
-    return named_tuple_list_to_dict(named_tuple_list)
+    if requested_return_type == 'dict':
+        return named_tuple_list_to_dict(named_tuple_list)
+
+    return named_tuple_list
 
 
 def named_tuple_list_to_dict(named_tuple_list):

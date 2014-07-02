@@ -38,7 +38,7 @@ def get_expenses_by_type(expense_type):
     """
     Get the expense of a particular type
     """
-    expense = parsing_service.get_expense_by_type(expense_type, 'dict')
+    expense = parsing_service.get_expenses_by_type(expense_type, 'dict')
     return json.dumps(expense)
 
 debug(True)
