@@ -78,7 +78,7 @@ file.write('Any edits will be overwritten. \n' + '\'\'\' \n \n')
 
 # beginning statements
 file.write('import sqlite3 \n \n')
-file.write('con = sqlite3.connect(\'expenses.db\') \n \n')
+file.write('con = sqlite3.connect(\'expenses.sqlite\') \n \n')
 
 # write all the sql we constructed above
 file.write(sql)

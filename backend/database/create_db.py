@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.connect('expenses.db')  # creates the file f it doesn't exist yet
+con = sqlite3.connect('expenses.sqlite')  # creates the file if it doesn't exist yet
 
 con.execute("""CREATE TABLE expenses(
     id INTEGER PRIMARY KEY,

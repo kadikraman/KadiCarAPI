@@ -3,9 +3,9 @@ from subprocess import call
 
 # Delete the old database
 try:
-    os.remove('expenses.db')
-except WindowsError as e:
-    print str(e)
+    os.remove('expenses.sqlite')
+except OSError:
+    pass
 
 # Build a new database
 call(['python', 'create_db.py'])
