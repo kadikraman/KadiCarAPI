@@ -1,2 +1,4 @@
 *.pyc
 .idea/
+backend/database/expenses.sqlite
+backend/database/populate_db.py
