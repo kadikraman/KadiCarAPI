@@ -83,7 +83,7 @@ def named_tuple_to_dict(named_tuple):
     for field in named_tuple._fields:
         # Create a dictionary key for each field in tuple and
         # enter the corresponding value by asking the
-        # the object if it has an attribute/property with 
+        # the object if it has an attribute/property with
         # name of the field, and if so, return the value.
         dictionary[field] = getattr(named_tuple, field)
 

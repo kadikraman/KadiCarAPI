@@ -6,7 +6,6 @@ to insert all the data that was in the JSON file to the expenses table
 
 import json
 import time
-from pprint import pprint
 
 json_data = open('data.json')
 
@@ -17,51 +16,51 @@ data = json.load(json_data)
 sql = ''
 
 for expense in data:
-	sql += 'con.execute("""INSERT INTO expenses\n'
+    sql += 'con.execute("""INSERT INTO expenses\n'
 
-	# expense_type always in dict
-	sql += '\t' + '(expense_type, \n \t'
+    # expense_type always in dict
+    sql += '\t' + '(expense_type, \n \t'
 
-	# amount always in dict
-	sql += 'amount, \n \t'
+    # amount always in dict
+    sql += 'amount, \n \t'
 
-	# mileage is nullable
-	if('mileage' in expense):
-		sql += 'mileage, \n \t'
+    # mileage is nullable
+    if('mileage' in expense):
+        sql += 'mileage, \n \t'
 
-	# litres is mullable
-	if('litres' in expense):
-		sql += 'litres, \n \t'
+    # litres is mullable
+    if('litres' in expense):
+        sql += 'litres, \n \t'
 
-	# comment is nullable
-	if('comment' in expense):
-		sql += 'comment, \n \t'
+    # comment is nullable
+    if('comment' in expense):
+        sql += 'comment, \n \t'
 
-	# expense_date always in dict
-	sql += 'expense_date) \n'
+    # expense_date always in dict
+    sql += 'expense_date) \n'
 
-	sql += 'VALUES  \n'
+    sql += 'VALUES  \n'
 
-	# expense_type always in dict
-	sql += '\t' + '(\'' + expense['expense_type'] + '\', \n'
+    # expense_type always in dict
+    sql += '\t' + '(\'' + expense['expense_type'] + '\', \n'
 
-	# amount always in dict
-	sql += '\t' + str(expense['cost']) + ', \n'
+    # amount always in dict
+    sql += '\t' + str(expense['cost']) + ', \n'
 
-	# mileage is nullable
-	if('mileage' in expense):
-		sql += '\t' + str(expense['mileage']) + ', \n'
+    # mileage is nullable
+    if('mileage' in expense):
+        sql += '\t' + str(expense['mileage']) + ', \n'
 
-	# litres is nullable
-	if('litres' in expense):
-		sql += '\t' + str(expense['litres']) + ', \n'
+    # litres is nullable
+    if('litres' in expense):
+        sql += '\t' + str(expense['litres']) + ', \n'
 
-	# comment is nullable
-	if('comment' in expense):
-		sql += '\t' + '\'' + str(expense['comment']) + '\'' + ', \n'
+    # comment is nullable
+    if('comment' in expense):
+        sql += '\t' + '\'' + str(expense['comment']) + '\'' + ', \n'
 
-	# expense_date always in dict
-	sql += '\t' + '\'' + expense['expense_date'] + '\')""") \n \n'
+    # expense_date always in dict
+    sql += '\t' + '\'' + expense['expense_date'] + '\')""") \n \n'
 
 
 # open the file (this creates the file if it didn't already exist)
