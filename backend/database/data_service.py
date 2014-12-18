@@ -5,6 +5,8 @@ Handles the interaction with an SQLite database
 import sqlite3
 from collections import namedtuple
 
+db_path = "database/expenses.sqlite";
+
 
 def namedtuple_factory(cursor, row):
     """
@@ -20,7 +22,7 @@ def get_all_expenses():
     """
     Returns all expenses in the db
     """
-    conn = sqlite3.connect("database/expenses.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = namedtuple_factory
     connection_cursor = conn.cursor()
     connection_cursor.execute("SELECT * FROM expenses")
@@ -35,7 +37,7 @@ def get_expenses_by_type(expense_type):
     """
     Returns all expenses of the given type
     """
-    conn = sqlite3.connect("database/expenses.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = namedtuple_factory
     connection_cursor = conn.cursor()
     connection_cursor.execute("""SELECT * 
@@ -52,7 +54,7 @@ def get_expense_by_id(expense_id):
     """
     Returns the expenses of the given id
     """
-    conn = sqlite3.connect("database/expenses.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = namedtuple_factory
     connection_cursor = conn.cursor()
     connection_cursor.execute("""SELECT * 
