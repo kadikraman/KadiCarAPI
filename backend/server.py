@@ -3,16 +3,21 @@ Handles requests from the client
 """
 import json
 from database import parsing_service
-from bottle import route, run, get, template, debug
+from bottle import route, run, get, template, debug, static_file
 
-@route("/all_expenses")
+@get("/")
+@get("/home")
+def hello_kadicar():
+    return static_file('index.html', root='../frontend')
+
+@get("/data/all_expenses")
 def all_expenses():
     """
     It does stuff
     """
     return json.dumps(parsing_service.get_all_expenses('dict'))
 
-@get("/get_expense_by_id/:expense_id")
+@get("/data/get_expense_by_id/:expense_id")
 def get_one_expense(expense_id):
     """
     Get an expense by id
@@ -24,7 +29,7 @@ def get_one_expense(expense_id):
 
     return json.dumps(expense)
 
-@get("/dashboard")
+@get("/data/dashboard")
 def get_dashboard():
     """
     Testing templates
@@ -42,5 +47,4 @@ def get_expenses_by_type(expense_type):
     return json.dumps(expense)
 
 debug(True)
-run(reloader=True)
 run()
