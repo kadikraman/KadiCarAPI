@@ -74,10 +74,10 @@ kadiCarApp.directive('barVisualisation', function(){
         // object to split it onto 2 lines.  This technique works with any
         // number of lines, it isn't dimple specific.
         svg.selectAll("title_text")
-          .data(["Click legend to","show/hide owners:"])
+          .data(["Click legend to","show/hide types of expense:"])
           .enter()
           .append("text")
-            .attr("x", 499)
+            .attr("x", 1150)
             .attr("y", function (d, i) { return 90 + i * 14; })
             .style("font-family", "sans-serif")
             .style("font-size", "10px")
