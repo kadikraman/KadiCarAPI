@@ -5,10 +5,17 @@ import json
 from database import parsing_service
 from bottle import route, run, get, template, debug, static_file
 
-@get("/")
-@get("/home")
+@route("/")
+@route("/home")
 def hello_kadicar():
     return static_file('index.html', root='../frontend')
+
+# Static files such as images or CSS files are not served automatically
+# Added a route and a callback to control which files get served and where to find them
+# currently serving everything linked to from /frontend/static (js, css etc)
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='../frontend/static')
 
 @get("/data/all_expenses")
 def all_expenses():
@@ -46,5 +53,4 @@ def get_expenses_by_type(expense_type):
     expense = parsing_service.get_expenses_by_type(expense_type, 'dict')
     return json.dumps(expense)
 
-debug(True)
-run()
+run(host='localhost', port=8000, debug=True)
