@@ -15,3 +15,5 @@ call(['python', 'convert_json_to_sql.py'])
 
 # Populate the the database with default data
 call(['python', 'populate_db.py'])
+
+print("Rebuild successful")

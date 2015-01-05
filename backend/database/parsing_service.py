@@ -5,7 +5,7 @@ The middleman between the server and data service.
 Handles requests from the server and returns db queries in the desired format.
 """
 
-import data_service
+from database import data_service
 
 
 def get_all_expenses(requested_return_type):
