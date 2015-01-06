@@ -6,8 +6,8 @@
 		.directive('barVisualisation', function(){
 	  // constants
 	  var margin = 50,
-	    width = 1600,
-	    height = 1300;
+	    width = 1500,
+	    height = 450;
 
 	  return {
 	    restrict: 'E',
