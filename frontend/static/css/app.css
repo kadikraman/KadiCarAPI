@@ -2,3 +2,17 @@
     background: #A2A88F;
     border-bottom: 1px solid #7B7F6D;
 }
+
+.active {
+	background: #E1DAA2;
+	font-weight: bold;
+	color: #ffffff;
+
+}
+
+a.active {
+	background: #E1DAA2;
+	font-weight: bold;
+	color: #ffffff;
+
+}
