@@ -1,11 +1,31 @@
-I am going to be a raw view of the data.
-
 <div ng-controller="RawViewCtrl">
-	<p>{{expense.id}}</p>
-	<p>{{expense.expense_type}}</p>
-	<p>{{expense.amount}}</p>
-	<p>{{expense.expense_date}}</p>
-	<p>{{expense.mileage}}</p>
-	<p>{{expense.litres}}</p>
-	<p>{{expense.comment}}</p>
+	<div class="col-md-12 mt">
+		<div class="content-panel">
+			<table class="table table-hover ">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Expense Type</th>
+						<th>Amount</th>
+						<th>Expense Date</th>
+						<th>Mileage</th>
+						<th>Litres</th>
+						<th>Comment</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="expense in data">
+						<td>{{expense.id}}</td>
+						<td>{{expense.expense_type}}</td>
+						<td>{{expense.amount | currency:currencySymbol}}</td>
+						<td>{{expense.expense_date | date:'d MMM y'}}</td>
+						<td>{{expense.mileage}}</td>
+						<td>{{expense.litres}}</td>
+						<td>{{expense.comment}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div><!--/content-panel -->
+	</div><!-- /col-md-12 -->
+</div><!-- row -->
 </div>

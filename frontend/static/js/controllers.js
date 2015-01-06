@@ -17,17 +17,24 @@
 				$scope.getAllExpenses();
 			}
 		}])
-	.controller('RawViewCtrl', ['$scope', function RawViewCtrl($scope){
-		$scope.expense =  {
-			id: 0,
-			expense_type: "initial_purchase",
-			amount: 1380,
-			expense_date: "2013-11-06",
-			mileage: 12345,
-			litres: 35,
-			comment: "this is a sample expense", 
-		};
+	.controller('RawViewCtrl', ['$scope', '$http', function RawViewCtrl($scope, $http){
+
+		$scope.currencySymbol = '£';
+		
+		$scope.getAllExpenses = function(){
+			$http.get('/data/all_expenses')
+			.success(function(results){
+						// assign the result to a scope variable
+						$scope.data = results;
+					})
+		}
+			// wrapping this in an if statement to prevent continuous calls to this function
+			if(!$scope.data){
+				$scope.getAllExpenses();
+			}
 	}])
+	// keeps track of which tab is currently selected
+	// the appropriate .html fragment is served via ng-include in index.html
 	.controller('TabsCtrl', ['$scope', function ($scope) {
 
 		$scope.currentTab = 'about.tpl.html';
