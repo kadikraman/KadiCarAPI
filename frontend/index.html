@@ -1,115 +1,95 @@
 <!DOCTYPE html>
 <html ng-app="kadiCarApp">
-	<head>
-        <meta charset="utf-8">
-        <title>KadiCar! Wroom wroom.</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <script src="http://d3js.org/d3.v2.js"></script>
-        <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>KadiCar! Wroom wroom.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> <!-- Latest compiled and minified CSS -->       
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">  Optional theme -->
-        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> Latest compiled and minified JavaScript -->
+    <link rel="icon" type="image/png" href="static/assets/img/dollarcar1.png">
 
-        <link rel="stylesheet" href="static/css/app.css"/>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
 
-        <script type="text/javascript" src="static/js/app.js"></script>
-        <script type="text/javascript" src="static/js/controllers.js"></script>
-        <script type="text/javascript" src="static/js/directives.js"></script>
-	</head>
-	<body>
-        
-        <section id="container">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> <!-- Latest compiled and minified CSS -->       
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">  Optional theme -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script> Latest compiled and minified JavaScript -->
 
-            <!--header start-->
-            <header class="header blue-bg">
-                <!--logo start-->
-                <a href="/home" class="logo"><b>KADICAR!</b></a>
-                <!--logo end-->
-            </header>
-            <!--header end-->
+    <link rel="stylesheet" href="static/css/app.css"/>
+    <link rel="stylesheet" href="static/css/dashgum-style.css"/>
+    <link rel="stylesheet" href="static/css/dashgum-style-responsive.css"/>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="static/js/app.js"></script>
+    <script type="text/javascript" src="static/js/controllers.js"></script>
+    <script type="text/javascript" src="static/js/directives.js"></script>
+</head>
+<body>
+
+    <section id="container">
+
+        <!--header start-->
+        <header class="header green-bg">
+            <a href="/home" class="logo"><b>KADICAR!</b></a>
+        </header>
+        <!--header end-->
 
         <!--sidebar start-->
-          <aside>
-              <div id="sidebar"  class="nav-collapse ">
+        <div ng-controller="TabsCtrl"> 
+            <aside>
+              <div id="sidebar"  class="nav-collapse" >
+
                   <!-- sidebar menu start-->
                   <ul class="sidebar-menu" id="nav-accordion">
-                  
-                      <p class="centered car-icon"><a href="profile.html"><img src="static/assets/img/dollarcar.svg" width="80"></a></p>
+
+                      <p class="centered car-icon"><a ng-click="onClickTab('about.tpl.html')"><img src="static/assets/img/dollarcar1.svg" width="80"></a></p>
                       <h5 class="centered">Toyota Yaris (1999)</h5>
-                        
-                      <li class="mt">
-                          <a href="index.html">
+
+                      <li class="tab" ng-class="{active:isActiveTab('dashboard.tpl.html')}" ng-click="onClickTab('dashboard.tpl.html')">
+                          <a>
                               <i class="fa fa-dashboard"></i>
                               <span>Dashboard</span>
                           </a>
                       </li>
 
-                      <li class="sub-menu">
-                          <a href="javascript:;" >
+                      <li class="tab" ng-class="{active:isActiveTab('raw.tpl.html')}" ng-click="onClickTab('raw.tpl.html')">
+                          <a>
                               <i class="fa fa-desktop"></i>
-                              <span>UI Elements</span>
+                              <span>Raw View</span>
                           </a>
-                          <ul class="sub">
-                              <li><a  href="general.html">General</a></li>
-                              <li><a  href="buttons.html">Buttons</a></li>
-                              <li><a  href="panels.html">Panels</a></li>
-                          </ul>
                       </li>
 
-                      <li class="sub-menu">
-                          <a href="javascript:;" >
+                      <li class="tab" ng-class="{active:isActiveTab('petrol.tpl.html')}" ng-click="onClickTab('petrol.tpl.html')">
+                          <a>
                               <i class="fa fa-cogs"></i>
-                              <span>Components</span>
+                              <span>Petrol Calculations</span>
                           </a>
-                          <ul class="sub">
-                              <li><a  href="calendar.html">Calendar</a></li>
-                              <li><a  href="gallery.html">Gallery</a></li>
-                              <li><a  href="todo_list.html">Todo List</a></li>
-                          </ul>
                       </li>
-                      <li class="sub-menu">
-                          <a href="javascript:;" >
+                      <li class="tab" ng-class="{active:isActiveTab('linechart.tpl.html')}" ng-click="onClickTab('linechart.tpl.html')">
+                          <a>
                               <i class="fa fa-book"></i>
-                              <span>Extra Pages</span>
+                              <span>Line Chart</span>
                           </a>
-                          <ul class="sub">
-                              <li class="active"><a  href="blank.html">Blank Page</a></li>
-                              <li><a  href="login.html">Login</a></li>
-                              <li><a  href="lock_screen.html">Lock Screen</a></li>
-                          </ul>
                       </li>
-                      <li class="sub-menu">
-                          <a href="javascript:;" >
+                      <li class="tab" ng-class="{active:isActiveTab('barchart.tpl.html')}" ng-click="onClickTab('barchart.tpl.html')">
+                          <a>
                               <i class="fa fa-tasks"></i>
-                              <span>Forms</span>
+                              <span>Bar Chart</span>
                           </a>
-                          <ul class="sub">
-                              <li><a  href="form_component.html">Form Components</a></li>
-                          </ul>
                       </li>
-                      <li class="sub-menu">
-                          <a href="javascript:;" >
+                      <li class="tab" ng-class="{active:isActiveTab('piechart.tpl.html')}" ng-click="onClickTab('piechart.tpl.html')">
+                          <a>
                               <i class="fa fa-th"></i>
-                              <span>Data Tables</span>
+                              <span>Pie Chart</span>
                           </a>
-                          <ul class="sub">
-                              <li><a  href="basic_table.html">Basic Table</a></li>
-                              <li><a  href="responsive_table.html">Responsive Table</a></li>
-                          </ul>
                       </li>
-                      <li class="sub-menu">
-                          <a href="javascript:;" >
+                      <li class="tab" ng-class="{active:isActiveTab('misccharts.tpl.html')}" ng-click="onClickTab('misccharts.tpl.html')">
+                          <a>
                               <i class=" fa fa-bar-chart-o"></i>
-                              <span>Charts</span>
+                              <span>Misc Charts</span>
                           </a>
-                          <ul class="sub">
-                              <li><a  href="morris.html">Morris</a></li>
-                              <li><a  href="chartjs.html">Chartjs</a></li>
-                          </ul>
                       </li>
 
                   </ul>
@@ -118,11 +98,107 @@
           </aside>
           <!--sidebar end-->
 
-            <!-- Hide the line chard for now
-            <div ng-include src="'static/partials/basic_line_chart.html'"></div>
-            -->
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <div id="mainView">
+                  <div ng-include="currentTab"></div>
+              </div>
 
-            <div ng-include src="'static/partials/raw_view.html'"></div>
-        </section>
-	</body>
+              <script type="text/ng-template" id="dashboard.tpl.html">
+              <h3><i class="fa fa-angle-right"></i> Dashboard</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="dashboard">
+                            <div ng-include src="'static/partials/raw_view.html'"></div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="raw.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> Raw View</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="raw">
+                            <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="petrol.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> Petrol Calculations</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="petrol">
+                            <p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="linechart.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> Line Chart</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="linechart">
+            <div ng-include src="'static/partials/basic_line_chart.html'"></div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="barchart.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> Bar Chart</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="barchart">
+                            <p>About KadiCar. Pet pet the car. Feed it petrols. But oh noes, is car getting too pricey to manage? Better investigate.</p>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="piechart.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> Pie Chart</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="piechart">
+                            <p>Pie charts suck :(</p>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="misccharts.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> Misc Charts</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="misccharts">
+                            <p>Meow Meow Meow</p>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="about.tpl.html">
+                <h3><i class="fa fa-angle-right"></i> About</h3>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div id="about">
+                            <p>About KadiCar. Pet pet the car. Feed it petrols. But oh noes, is car getting too pricey to manage? Better investigate.</p>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+
+        </section><!--/wrapper -->
+    </section><!-- /MAIN CONTENT -->
+
+</div>
+
+
+</section>
+</body>
 </html>
